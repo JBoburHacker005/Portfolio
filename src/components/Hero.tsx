@@ -27,8 +27,16 @@ const Hero = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-6"
+            className="mb-6 flex flex-col items-center gap-6"
           >
+            <motion.img
+              src="/brand-logo.png"
+              alt="JBN creative monogram"
+              className="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl"
+              initial={{ rotate: -5, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
+            />
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading mb-4">
               <span className="gradient-text glow-text-primary">
                 Creative Developer

@@ -16,6 +16,11 @@ const Footer = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center gap-6">
+          <img
+            src="/brand-logo.png"
+            alt="JBN creative monogram"
+            className="w-16 h-16 drop-shadow-xl"
+          />
           <div className="flex gap-6">
             {socialLinks.map((social) => (
               <a
