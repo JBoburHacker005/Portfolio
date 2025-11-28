@@ -27,21 +27,28 @@ const Hero = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-6 flex flex-col items-center gap-6"
+            className="mb-10"
           >
-            <motion.img
-              src="/brand-logo.png"
-              alt="JBN creative monogram"
-              className="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl"
-              initial={{ rotate: -5, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
-            />
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading mb-4">
-              <span className="gradient-text glow-text-primary">
-                Creative Developer
-              </span>
-            </h1>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+              <motion.img
+                src="/brand-logo.png"
+                alt="JBN creative monogram"
+                className="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl"
+                initial={{ rotate: -5, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
+              />
+              <div className="text-center md:text-left flex flex-col items-center md:items-start gap-4">
+                <p className="text-xl md:text-2xl font-semibold tracking-wide text-primary">
+                  Jovliyev Bobur Nuriddin O&apos;g&apos;li
+                </p>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading">
+                  <span className="gradient-text glow-text-primary">
+                    Creative Developer
+                  </span>
+                </h1>
+              </div>
+            </div>
           </motion.div>
 
           <div className="text-2xl md:text-3xl lg:text-4xl text-muted-foreground mb-8 h-20">
