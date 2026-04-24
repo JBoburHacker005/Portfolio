@@ -16,14 +16,59 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Xabar yuborildi!",
-      description: "Tez orada siz bilan bog'lanaman.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    // .env faylidan token va chat id ni olamiz
+    const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+
+    if (!botToken || !chatId) {
+      toast({
+        title: "Xatolik!",
+        description: "Telegram bot sozlamalari topilmadi. Dasturchiga murojaat qiling.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const text = `📩 <b>Yangi xabar portfoliodan!</b>\n\n👤 <b>Ism:</b> ${formData.name}\n📧 <b>Email:</b> ${formData.email}\n📝 <b>Xabar:</b> ${formData.message}`;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: "HTML"
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Xabar yuborildi!",
+          description: "Tez orada siz bilan bog'lanaman.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Telegram API xatosi");
+      }
+    } catch (error) {
+      toast({
+        title: "Xatolik!",
+        description: "Xabarni yuborishda xatolik yuz berdi. Iltimos keyinroq urinib ko'ring.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactLinks = [
@@ -128,9 +173,10 @@ const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
+                disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-primary transition-all duration-300 py-6 text-lg mt-auto hover:bg-indigo-600 rounded-full"
               >
-                Send Message
+                {isSubmitting ? "Yuborilmoqda..." : "Send Message"}
               </Button>
             </form>
           </motion.div>
