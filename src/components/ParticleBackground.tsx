@@ -59,9 +59,8 @@ const ParticleBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${
-              0.2 * (1 - distance / connectionDistance)
-            })`;
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.2 * (1 - distance / connectionDistance)
+              })`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

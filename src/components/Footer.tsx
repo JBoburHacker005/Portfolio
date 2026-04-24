@@ -38,9 +38,9 @@ const Footer = () => {
             <ul className="space-y-4">
               {["Web Development", "Mobile Apps", "AI/ML", "Cloud Solutions"].map((item) => (
                 <li key={item}>
-                  <a href="https://jbobur.vercel.app/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-default">
                     {item}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -51,9 +51,9 @@ const Footer = () => {
             <ul className="space-y-4">
               {["Frontend", "Backend", "Database", "DevOps"].map((item) => (
                 <li key={item}>
-                  <a href="https://jbobur.vercel.app/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-default">
                     {item}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -64,9 +64,9 @@ const Footer = () => {
             <ul className="space-y-4">
               {["FAQ", "Aloqa", "Blog", "Jamiyat"].map((item) => (
                 <li key={item}>
-                  <a href="https://jbobur.vercel.app/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-default">
                     {item}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>

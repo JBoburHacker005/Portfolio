@@ -1,26 +1,56 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Clock, CloudSun } from "lucide-react";
+import { Clock, CloudSun, Calendar, Wind } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [time, setTime] = useState<string>("");
+  const [dateStr, setDateStr] = useState<string>("");
+  const [weather, setWeather] = useState<{ temp: number | null; wind: number | null }>({ temp: null, wind: null });
   const location = useLocation();
 
   useEffect(() => {
-    const updateClock = () => {
+    const updateClockAndDate = () => {
       const now = new Date();
       setTime(
-        now.toLocaleTimeString("en-US", {
+        now.toLocaleTimeString("uz-UZ", {
           hour12: false,
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
         })
       );
+      
+      const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      setDateStr(now.toLocaleDateString("en-GB", options)); // standard formatted date
     };
-    updateClock();
-    const interval = setInterval(updateClock, 1000);
+    updateClockAndDate();
+    const interval = setInterval(updateClockAndDate, 1000);
+
+    const fetchWeather = async (lat: number, lon: number) => {
+      try {
+        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m`);
+        const data = await res.json();
+        if (data.current) {
+          setWeather({
+            temp: Math.round(data.current.temperature_2m),
+            wind: data.current.wind_speed_10m
+          });
+        }
+      } catch (err) {
+        console.error("Failed to fetch weather", err);
+      }
+    };
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => fetchWeather(pos.coords.latitude, pos.coords.longitude),
+        () => fetchWeather(41.2995, 69.2401) // Tashkent fallback
+      );
+    } else {
+      fetchWeather(41.2995, 69.2401);
+    }
+
     return () => clearInterval(interval);
   }, []);
 
@@ -28,24 +58,40 @@ const Navbar = () => {
     { name: "Bosh sahifa", href: "/" },
     { name: "Men haqimda", href: "/about" },
     { name: "Ko'nikmalar", href: "/skills" },
+    { name: "Sertifikatlar", href: "/certificates" },
     { name: "Loyihalar", href: "/projects" },
     { name: "Aloqa", href: "/contact" },
   ];
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
-      {/* Top Bar (Clock & Weather) */}
-      <div className="bg-[#050505] text-primary w-full py-1.5 px-4 md:px-8 flex justify-between items-center text-xs border-b border-primary/10">
-        <div className="flex items-center gap-1.5 font-medium">
-          <Clock className="w-3.5 h-3.5 text-cyan-400" />
-          <span className="text-white">{time || "00:00:00"}</span>
-        </div>
-        <div className="flex items-center gap-2 font-medium">
-          <div className="flex items-center gap-1.5">
-            <CloudSun className="w-4 h-4 text-cyan-400" />
-            <span className="text-white font-bold">22°C</span>
+      {/* Top Bar (Clock, Date, Weather, Wind) */}
+      <div className="bg-[#050505] text-primary w-full py-2 px-4 md:px-8 flex flex-col sm:flex-row justify-between items-center text-sm border-b border-primary/20">
+        <div className="flex items-center gap-6 font-medium">
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4 text-cyan-400" />
+            <span className="text-white text-base tracking-wide font-bold">{time || "00:00:00"}</span>
           </div>
-          <span className="text-white/80">Sunny</span>
+          <div className="flex items-center gap-2 hidden md:flex text-gray-300">
+            <Calendar className="w-4 h-4 text-purple-400" />
+            <span>{dateStr}</span>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-6 font-medium mt-2 sm:mt-0">
+          <div className="flex items-center gap-2">
+            <CloudSun className="w-5 h-5 text-yellow-400" />
+            <span className="text-white text-base font-bold">
+              {weather.temp !== null ? `${weather.temp}°C` : "Loading..."}
+            </span>
+            <span className="text-white/80 hidden lg:inline">Clear/Sunny</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-300">
+            <Wind className="w-4 h-4 text-blue-300" />
+            <span className="text-sm">
+              {weather.wind !== null ? `${weather.wind} km/h` : "--"}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -53,7 +99,6 @@ const Navbar = () => {
       <div className="bg-background/80 backdrop-blur-md border-b border-white/5 shadow-sm transition-all duration-300">
         <div className="container mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
           
-          {/* Logo & Name */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="p-1 bg-black rounded-lg border border-primary/20 shadow-[0_0_10px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-all duration-300">
               <img src="/brand-logo.png" alt="JBN Logo" className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:rotate-[360deg]" />
@@ -63,8 +108,7 @@ const Navbar = () => {
             </h1>
           </Link>
 
-          {/* Nav Links (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href || (location.pathname === '/' && link.href === '/') && location.pathname === link.href;
               return (
@@ -83,7 +127,6 @@ const Navbar = () => {
             })}
           </nav>
 
-          {/* Action Buttons */}
           <div className="flex items-center gap-3">
             <Button
               variant="outline"

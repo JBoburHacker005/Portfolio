@@ -1,17 +1,17 @@
 import Layout from "@/components/Layout";
 import AnimatedPage from "@/components/AnimatedPage";
-import Skills from "@/components/Skills";
+import Certificates from "@/components/Certificates";
 
-const SkillsPage = () => {
+const CertificatesPage = () => {
   return (
     <Layout>
       <AnimatedPage>
-        <div className="pt-8">
-          <Skills />
+        <div className="pt-8 mb-24">
+          <Certificates />
         </div>
       </AnimatedPage>
     </Layout>
   );
 };
 
-export default SkillsPage;
+export default CertificatesPage;

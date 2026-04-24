@@ -1,18 +1,27 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { 
+  Terminal, FileCode2, Code2, Server, Atom, Box, 
+  Database, Cloud, Laptop, Monitor, Container 
+} from "lucide-react";
 
 const Skills = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const skills = [
-    { name: "React", level: 95, color: "from-cyan-500 to-blue-500" },
-    { name: "TypeScript", level: 90, color: "from-blue-500 to-indigo-500" },
-    { name: "Node.js", level: 85, color: "from-green-500 to-emerald-500" },
-    { name: "UI/UX Design", level: 88, color: "from-pink-500 to-rose-500" },
-    { name: "Tailwind CSS", level: 92, color: "from-sky-500 to-cyan-500" },
-    { name: "Next.js", level: 87, color: "from-purple-500 to-pink-500" },
+  const techStack = [
+    { name: "Python", icon: Terminal },
+    { name: "JavaScript", icon: FileCode2 },
+    { name: "Java", icon: Code2 },
+    { name: "PHP", icon: Server },
+    { name: "React", icon: Atom },
+    { name: "Node.js", icon: Box },
+    { name: "Database", icon: Database },
+    { name: "Cloud", icon: Cloud },
+    { name: "macOS", icon: Laptop },
+    { name: "Linux", icon: Terminal },
+    { name: "Windows", icon: Monitor },
+    { name: "Docker", icon: Container }
   ];
 
   return (
@@ -32,33 +41,19 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {skills.map((skill, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {techStack.map((tech, index) => (
             <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300"
+              key={tech.name}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              className="glass p-6 rounded-2xl flex flex-col items-center justify-center gap-4 hover:scale-105 transition-all duration-300 group border border-primary/10 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] bg-gradient-to-br from-black/50 to-background/50"
             >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">{skill.name}</h3>
-                <span className="text-primary font-semibold">{skill.level}%</span>
+              <div className="p-4 rounded-xl bg-primary/5 group-hover:bg-cyan-500/10 transition-colors">
+                <tech.icon className="w-10 h-10 text-cyan-400 group-hover:text-cyan-300 transition-colors" strokeWidth={1.5} />
               </div>
-              <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.level}%` } : {}}
-                  transition={{ duration: 1, delay: index * 0.1 + 0.3, ease: "easeOut" }}
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
-                >
-                  <motion.div
-                    animate={{ x: [0, 100, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                  />
-                </motion.div>
-              </div>
+              <h3 className="text-lg font-bold text-gray-200 group-hover:text-white transition-colors">{tech.name}</h3>
             </motion.div>
           ))}
         </div>
