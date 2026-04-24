@@ -11,6 +11,7 @@ import AboutPage from "./pages/AboutPage";
 import SkillsPage from "./pages/SkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
+import CertificatesPage from "./pages/CertificatesPage";
 
 const queryClient = new QueryClient();
 
