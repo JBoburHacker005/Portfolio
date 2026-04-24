@@ -2,10 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Clock, CloudSun, Calendar, Wind } from "lucide-react";
 import { Button } from "./ui/button";
-import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
-  const { t, i18n } = useTranslation();
   const [time, setTime] = useState<string>("");
   const [dateStr, setDateStr] = useState<string>("");
   const [weather, setWeather] = useState<{ temp: number | null; wind: number | null }>({ temp: null, wind: null });
@@ -57,12 +55,12 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: t("nav.home"), href: "/" },
-    { name: t("nav.about"), href: "/about" },
-    { name: t("nav.skills"), href: "/skills" },
-    { name: t("nav.certificates"), href: "/certificates" },
-    { name: t("nav.projects"), href: "/projects" },
-    { name: t("nav.contact"), href: "/contact" },
+    { name: "Home", href: "/" },
+    { name: "About Me", href: "/about" },
+    { name: "Skills", href: "/skills" },
+    { name: "Certificates", href: "/certificates" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -103,7 +101,7 @@ const Navbar = () => {
           
           <Link to="/" className="flex items-center gap-3 group">
             <div className="p-1 bg-black rounded-lg border border-primary/20 shadow-[0_0_10px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-all duration-300">
-              <img src="/brand-logo.png" alt="JBN Logo" className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:rotate-[360deg]" />
+              <img src="/brand-logo.png" alt="JBN Logo" className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-white hidden sm:block tracking-tight group-hover:text-cyan-400 transition-colors">
               Jovliyev Bobur Nuriddin o'g'li
@@ -130,28 +128,21 @@ const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="flex gap-2 mr-2 bg-black/20 p-1.5 rounded-full border border-primary/20">
-              <button onClick={() => i18n.changeLanguage('uz')} className={`w-6 h-6 rounded-full overflow-hidden transition-transform hover:scale-110 ${i18n.language === 'uz' ? 'ring-2 ring-primary scale-110' : 'opacity-60 hover:opacity-100'}`} title="O'zbek">
-                <img src="https://img.icons8.com/?size=512&id=115682&format=png" alt="UZ" className="w-full h-full object-cover"/>
-              </button>
-              <button onClick={() => i18n.changeLanguage('en')} className={`w-6 h-6 rounded-full overflow-hidden transition-transform hover:scale-110 ${i18n.language === 'en' ? 'ring-2 ring-primary scale-110' : 'opacity-60 hover:opacity-100'}`} title="English">
-                <img src="https://img.icons8.com/?size=512&id=15534&format=png" alt="EN" className="w-full h-full object-cover"/>
-              </button>
-              <button onClick={() => i18n.changeLanguage('ru')} className={`w-6 h-6 rounded-full overflow-hidden transition-transform hover:scale-110 ${i18n.language === 'ru' ? 'ring-2 ring-primary scale-110' : 'opacity-60 hover:opacity-100'}`} title="Русский">
-                <img src="https://img.icons8.com/?size=512&id=15502&format=png" alt="RU" className="w-full h-full object-cover"/>
-              </button>
-            </div>
-            <Button
-              variant="outline"
-              className="hidden md:flex border-primary/30 text-white hover:bg-primary/20 hover:text-white rounded-full px-5 font-semibold text-sm h-10 transition-all duration-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] border border-cyan-500 bg-transparent"
-            >
-              {t("nav.download_cv")}
-            </Button>
-            <Button
-              className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-full px-6 font-semibold text-sm h-10 border-0 shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
-            >
-              {t("nav.hire_me")}
-            </Button>
+            <a href="https://t.me/Jovliyev_Bobur" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                className="hidden md:flex border-primary/30 text-white hover:bg-primary/20 hover:text-white rounded-full px-5 font-semibold text-sm h-10 transition-all duration-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] border border-cyan-500 bg-transparent"
+              >
+                Download CV
+              </Button>
+            </a>
+            <a href="https://t.me/Jovliyev_Bobur" target="_blank" rel="noopener noreferrer">
+              <Button
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-full px-6 font-semibold text-sm h-10 border-0 shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
+              >
+                Hire Me
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -6,10 +6,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useTranslation } from "react-i18next";
 
 const Contact = () => {
-  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const { toast } = useToast();
@@ -179,7 +177,7 @@ const Contact = () => {
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-primary transition-all duration-300 py-6 text-lg mt-auto hover:bg-indigo-600 rounded-full flex items-center justify-center gap-2"
               >
                 <Send className="w-5 h-5" />
-                {isSubmitting ? t("contact.sending") : t("contact.send_button")}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </motion.div>
