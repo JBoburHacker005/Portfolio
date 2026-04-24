@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Instagram, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -20,16 +20,19 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
+      title: "Xabar yuborildi!",
+      description: "Tez orada siz bilan bog'lanaman.",
     });
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const contactInfo = [
-    { icon: Mail, label: "Email", value: "hello@example.com" },
-    { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
-    { icon: MapPin, label: "Location", value: "San Francisco, CA" },
+  const contactLinks = [
+    { icon: Mail, label: "Email", value: "jbobur005@gmail.com", href: "mailto:jbobur005@gmail.com", color: "text-red-400" },
+    { icon: Phone, label: "Phone", value: "+998 (93) 005-42-87", href: "tel:+998930054287", color: "text-green-400" },
+    { icon: Send, label: "Telegram", value: "Jovliyev_Bobur", href: "https://t.me/Jovliyev_Bobur", color: "text-blue-400" },
+    { icon: Github, label: "GitHub", value: "github.com/JBoburHacker005", href: "https://github.com/JBoburHacker005", color: "text-gray-200" },
+    { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/Bobur005", href: "https://linkedin.com/in/Bobur005", color: "text-blue-500" },
+    { icon: Instagram, label: "Instagram", value: "j.bobur005", href: "https://instagram.com/j.bobur005", color: "text-pink-500" },
   ];
 
   return (
@@ -42,36 +45,40 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4">
-            Get In <span className="gradient-text">Touch</span>
+            <span className="gradient-text">Get in Touch</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss your next project or just say hello
+            Have questions or want to learn more? We'd love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
-            {contactInfo.map((info, index) => (
-              <motion.div
+            {contactLinks.map((info, index) => (
+              <motion.a
+                href={info.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 key={info.label}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="flex items-center gap-4 glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="flex flex-col items-center justify-center p-6 glass rounded-2xl hover:border-primary/50 transition-all duration-300 gap-3 text-center"
               >
-                <div className="p-4 bg-primary/10 rounded-xl">
-                  <info.icon className="w-6 h-6 text-primary" />
+                <div className="p-4 bg-primary/10 rounded-full">
+                  <info.icon className={`w-8 h-8 ${info.color}`} />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{info.label}</p>
-                  <p className="text-lg font-semibold">{info.value}</p>
+                  <h3 className="font-bold text-lg">{info.label}</h3>
+                  <p className="text-sm text-muted-foreground break-words w-full px-2">{info.value}</p>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
 
@@ -79,9 +86,9 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass p-8 rounded-3xl"
+            className="glass p-8 rounded-3xl h-full flex flex-col"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 flex-grow flex flex-col justify-center">
               <div>
                 <Input
                   type="text"
@@ -91,7 +98,7 @@ const Contact = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
-                  className="bg-background/50 border-primary/20 focus:border-primary transition-colors"
+                  className="bg-background/50 border-primary/20 focus:border-primary transition-colors py-6"
                 />
               </div>
               <div>
@@ -103,7 +110,7 @@ const Contact = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
-                  className="bg-background/50 border-primary/20 focus:border-primary transition-colors"
+                  className="bg-background/50 border-primary/20 focus:border-primary transition-colors py-6"
                 />
               </div>
               <div>
@@ -115,13 +122,13 @@ const Contact = () => {
                   }
                   required
                   rows={6}
-                  className="bg-background/50 border-primary/20 focus:border-primary transition-colors resize-none"
+                  className="bg-background/50 border-primary/20 focus:border-primary transition-colors resize-none py-4"
                 />
               </div>
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-primary transition-all duration-300 hover:scale-105"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glow-primary transition-all duration-300 py-6 text-lg mt-auto hover:bg-indigo-600 rounded-full"
               >
                 Send Message
               </Button>
@@ -134,3 +141,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

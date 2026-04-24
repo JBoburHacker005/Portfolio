@@ -1,46 +1,84 @@
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Instagram, Send, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Mail, href: "#contact", label: "Email" },
-  ];
-
   return (
-    <footer className="relative py-12 border-t border-border/50">
+    <footer className="border-t border-primary/10 bg-background/50 backdrop-blur-lg pt-16 pb-8 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5" />
-      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center gap-6">
-          <img
-            src="/brand-logo.png"
-            alt="JBN creative monogram"
-            className="w-16 h-16 drop-shadow-xl"
-          />
-          <div className="flex gap-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="p-3 glass rounded-full hover:bg-primary/20 transition-all duration-300 hover:scale-110 group"
-              >
-                <social.icon className="w-5 h-5 text-primary group-hover:text-primary transition-colors" />
-              </a>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
-          <div className="text-center">
-            <p className="text-muted-foreground flex items-center gap-2 justify-center">
-              Made with <Heart className="w-4 h-4 text-secondary fill-secondary animate-pulse" /> by Your Name
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-4">
+              <img src="/brand-logo.png" alt="Logo" className="w-8 h-8 drop-shadow-lg" />
+              <h3 className="text-xl font-bold gradient-text">Jovliyev Bobur<br/>Nuriddin o'g'li</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Zamonaviy dasturlash va kreativ yechimlar. Zamonaviy web texnologiyalari va dasturlash tillari bilan ishlayman. Kreativ yechimlar va sifatli kod yozishni yaxshi ko'raman.
             </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} All rights reserved.
-            </p>
+            <div className="flex gap-4 pt-4">
+              <a href="https://t.me/Jovliyev_Bobur" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noreferrer">
+                <Send className="w-5 h-5" />
+              </a>
+              <a href="https://github.com/JBoburHacker005" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noreferrer">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://linkedin.com/in/Bobur005" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noreferrer">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="https://instagram.com/j.bobur005" className="text-muted-foreground hover:text-primary transition-colors" target="_blank" rel="noreferrer">
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-6 text-foreground">Loyihalar</h4>
+            <ul className="space-y-4">
+              {["Web Development", "Mobile Apps", "AI/ML", "Cloud Solutions"].map((item) => (
+                <li key={item}>
+                  <a href="https://jbobur.vercel.app/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-6 text-foreground">Texnologiyalar</h4>
+            <ul className="space-y-4">
+              {["Frontend", "Backend", "Database", "DevOps"].map((item) => (
+                <li key={item}>
+                  <a href="https://jbobur.vercel.app/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-6 text-foreground">Yordam</h4>
+            <ul className="space-y-4">
+              {["FAQ", "Aloqa", "Blog", "Jamiyat"].map((item) => (
+                <li key={item}>
+                  <a href="https://jbobur.vercel.app/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-primary/10 text-sm text-muted-foreground">
+          <p>© {currentYear} Jovliyev Bobur Nuriddin o'g'li. Barcha huquqlar himoyalangan.</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <a href="https://jbobur.vercel.app/" className="hover:text-primary transition-colors">Maxfiylik</a>
+            <a href="https://jbobur.vercel.app/" className="hover:text-primary transition-colors">Shartlar</a>
+            <a href="https://jbobur.vercel.app/" className="hover:text-primary transition-colors">Cookie</a>
           </div>
         </div>
       </div>
@@ -49,3 +87,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

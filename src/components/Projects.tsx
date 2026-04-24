@@ -1,43 +1,96 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
-import { Button } from "./ui/button";
+import { Laptop, Smartphone, Gamepad2, Briefcase, Bot, Shield, ExternalLink } from "lucide-react";
 
 const Projects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const projects = [
+  const categories = [
     {
-      title: "E-Commerce Platform",
-      description: "Modern e-commerce solution with advanced features",
-      tags: ["React", "Node.js", "MongoDB"],
+      title: "Operatsion Tizimlar",
+      description: "Zamonaviy tizimlar faqat web sayt platformasida",
+      icon: Laptop,
+      gradient: "from-blue-500 to-indigo-500",
+      links: [
+        { name: "Windows 10", url: "https://win-10.vercel.app/" },
+        { name: "Windows 11", url: "https://windowsxi.vercel.app/Bobur" },
+        { name: "Windows 12", url: "https://win12online.com/" },
+        { name: "Mac OS", url: "https://chrisbinsunny.github.io/chrishub/#/" },
+        { name: "Linux Kali", url: "https://ali-abo-alshamlat.github.io/" },
+        { name: "Ubuntu", url: "https://distrosea.com/view/" },
+      ]
+    },
+    {
+      title: "Ilovalar Platformasi",
+      description: "Ilovalar bilan ishlash uchun zamonaviy platforma",
+      icon: Smartphone,
       gradient: "from-cyan-500 to-blue-500",
+      links: [
+        { name: "JBN Services", url: "https://jbn-services.vercel.app/" },
+        { name: "Smart Coding", url: "https://smartcoding.vercel.app/" },
+        { name: "My Services", url: "https://my-services.vercel.app/" },
+        { name: "Killers Hunt", url: "https://killers-hunt.vercel.app/" },
+        { name: "Renessans", url: "https://go-renessans.vercel.app/" },
+        { name: "Creative Craft", url: "https://creative-craft.vercel.app/" },
+      ]
     },
     {
-      title: "AI Dashboard",
-      description: "Real-time analytics dashboard with AI insights",
-      tags: ["Next.js", "TypeScript", "TailwindCSS"],
+      title: "O'yinlar Platformasi",
+      description: "Multiplayer o'yinlar uchun zamonaviy platforma",
+      icon: Gamepad2,
       gradient: "from-purple-500 to-pink-500",
+      links: [
+        { name: "Ballz Game", url: "https://ballz-game.vercel.app/" },
+        { name: "Air Hockey", url: "https://airhockey-uz.vercel.app/" },
+        { name: "Snake Game", url: "https://snake-uz.vercel.app/" },
+        { name: "Minesweeper Game", url: "https://minesweeper-uz.vercel.app/" },
+        { name: "Tic Tac Toe", url: "https://tik-tak-toe-uz.vercel.app/" },
+        { name: "Connecting Game", url: "https://connecting-game-uz.vercel.app/" },
+      ]
     },
     {
-      title: "Social Network",
-      description: "Community platform with real-time messaging",
-      tags: ["React", "Firebase", "Framer Motion"],
-      gradient: "from-pink-500 to-rose-500",
+      title: "Buyurtmalar Platformasi",
+      description: "Bu yerda men boshqa insonlarga yaratib bergan platformalarim joylashgan",
+      icon: Briefcase,
+      gradient: "from-amber-500 to-orange-500",
+      links: [
+        { name: "Portfolio", url: "https://uzb-portfolio.vercel.app/" },
+        { name: "Flux Shabloni", url: "https://offer-uz.vercel.app/#work" },
+        { name: "Chess 3D", url: "https://chess3d-uz.vercel.app/" },
+      ]
     },
     {
-      title: "Portfolio Builder",
-      description: "No-code portfolio builder for creators",
-      tags: ["Vue.js", "Supabase", "TailwindCSS"],
-      gradient: "from-green-500 to-emerald-500",
+      title: "Botlar Platformasi",
+      description: "Bu yerda men yaratgan botlarim joylashgan",
+      icon: Bot,
+      gradient: "from-emerald-500 to-teal-500",
+      links: [
+        { name: "JBN AI", url: "https://jbobur.vercel.app/" },
+        { name: "JBN Music", url: "https://jbobur.vercel.app/" },
+        { name: "JBN Video", url: "https://jbobur.vercel.app/" },
+        { name: "JBN News", url: "https://jbobur.vercel.app/" },
+        { name: "JBN Edu", url: "https://jbobur.vercel.app/" },
+        { name: "JBN Games", url: "https://jbobur.vercel.app/" },
+      ]
     },
+    {
+      title: "Maxfiylik Platformasi",
+      description: "Bu yerda men yaratgan maxfiylik uchun mo'ljallangan platformalarim joylashgan",
+      icon: Shield,
+      gradient: "from-rose-500 to-red-500",
+      links: [
+        { name: "Encrypt", url: "https://shifr.vercel.app/" },
+        { name: "Password Generator", url: "https://password-uz.vercel.app/" },
+        { name: "SecureVPN", url: "https://vpn-uz.vercel.app/" },
+      ]
+    }
   ];
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden">
+    <section ref={ref} id="projects" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -46,66 +99,51 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4">
-            Featured <span className="gradient-text">Projects</span>
+            <span className="gradient-text">L O Y I H A L A R I M</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent work and creative endeavors
+            Mening eng yaxshi ishlarim
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {categories.map((category, index) => (
             <motion.div
-              key={project.title}
+              key={category.title}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
-              className="relative group"
+              className="relative group h-full flex flex-col"
             >
-              <motion.div
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="glass p-8 rounded-3xl h-full relative overflow-hidden"
-              >
+              <div className="glass p-8 rounded-3xl h-full relative overflow-hidden flex flex-col border border-primary/10 hover:border-primary/50 transition-colors">
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                  className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
                 />
                 
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <div className="relative z-10 flex flex-col items-center text-center flex-grow">
+                  <div className="p-4 bg-muted/50 rounded-2xl mb-6">
+                    <category.icon className="w-10 h-10 text-primary" />
                   </div>
-
-                  <div className="flex gap-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
+                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {category.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-8 text-sm">{category.description}</p>
+                  
+                  <div className="grid grid-cols-2 gap-3 w-full mt-auto">
+                    {category.links.map((link) => (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 bg-primary/10 hover:bg-primary/20 text-primary text-xs md:text-sm font-medium rounded-xl border border-primary/20 hover:border-primary/50 transition-all hover:scale-105"
+                      >
+                        <span className="truncate">{link.name}</span>
+                        <ExternalLink className="w-3 h-3 flex-shrink-0" />
+                      </a>
+                    ))}
                   </div>
                 </div>
 
@@ -115,9 +153,9 @@ const Projects = () => {
                     opacity: hoveredIndex === index ? 0.3 : 0,
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`absolute -right-10 -bottom-10 w-40 h-40 bg-gradient-to-br ${project.gradient} rounded-full blur-3xl`}
+                  className={`absolute -right-10 -bottom-10 w-40 h-40 bg-gradient-to-br ${category.gradient} rounded-full blur-3xl -z-10`}
                 />
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -127,3 +165,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
