@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { Github, Linkedin, Mail, Instagram } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram, Layout, Database, Smartphone, Code } from "lucide-react";
 import { Button } from "./ui/button";
 import ParticleBackground from "./ParticleBackground";
 
@@ -80,20 +80,20 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex justify-center gap-6 md:gap-12 mb-12 text-sm md:text-base font-medium text-muted-foreground glass py-4 px-8 rounded-2xl mx-auto max-w-2xl border border-primary/20"
+            className="flex justify-center gap-8 md:gap-16 mb-12 text-xs md:text-sm uppercase tracking-wider font-semibold text-muted-foreground glass py-6 px-10 rounded-2xl mx-auto max-w-3xl border border-primary/20"
           >
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold text-primary mb-1 glow-text-primary">2+</span>
+              <span className="text-4xl md:text-6xl font-extrabold text-primary mb-2 glow-text-primary">3+</span>
               <span>Years Experience</span>
             </div>
-            <div className="w-px bg-primary/30 h-14"></div>
+            <div className="w-px bg-primary/30 h-16"></div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold text-primary mb-1 glow-text-primary">15+</span>
+              <span className="text-4xl md:text-6xl font-extrabold text-primary mb-2 glow-text-primary">25+</span>
               <span>Projects Done</span>
             </div>
-            <div className="w-px bg-primary/30 h-14"></div>
+            <div className="w-px bg-primary/30 h-16"></div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-bold text-primary mb-1 glow-text-primary">100%</span>
+              <span className="text-4xl md:text-6xl font-extrabold text-primary mb-2 glow-text-primary">100%</span>
               <span>Client Satisfaction</span>
             </div>
           </motion.div>
@@ -163,7 +163,67 @@ const Hero = () => {
           />
         </div>
       </motion.div>
-    </section>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-black/40">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              What I <span className="text-primary">Do</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              I provide a wide range of digital services to help your business grow and stand out in the competitive landscape.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Layout,
+                title: "Frontend Development",
+                desc: "Building beautiful, responsive, and highly interactive user interfaces using React, Vue, and modern CSS frameworks like Tailwind.",
+              },
+              {
+                icon: Database,
+                title: "Backend Development",
+                desc: "Creating robust APIs and server-side architecture using Node.js, Python/Django, and reliable SQL/NoSQL databases.",
+              },
+              {
+                icon: Smartphone,
+                title: "Responsive Design",
+                desc: "Ensuring that every application looks stunning and works perfectly across all devices, from mobile phones to large desktop screens.",
+              },
+              {
+                icon: Code,
+                title: "Clean Code",
+                desc: "Writing maintainable, scalable, and fully documented code following industry best practices and design patterns.",
+              },
+            ].map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="glass p-6 rounded-2xl border border-primary/20 hover:border-primary/50 transition-colors group"
+              >
+                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{service.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

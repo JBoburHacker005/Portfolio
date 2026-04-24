@@ -115,7 +115,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`text-sm font-medium transition-all duration-300 border-b-2 py-1 ${
+                  className={`text-lg font-bold transition-all duration-300 border-b-2 py-1 ${
                     isActive
                       ? "text-white border-purple-500 shadow-[0_4px_10px_-2px_rgba(168,85,247,0.5)]"
                       : "text-muted-foreground border-transparent hover:text-white hover:border-cyan-500"

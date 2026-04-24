@@ -41,11 +41,13 @@ const About = () => {
             </div>
 
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Salom, mening ismim Bobur Jovliyev Nuriddin o'g'li. Men 2010-yil 7-iyun kuni O'zbekiston Respublikasi Qashqadaryo viloyati Qamashi tumani Uzun qishlog'ida harbiy xizmatchi oilasida tug'ilganman. Men matematika, ingliz tili, fizika va informatika fanlariga qiziqaman hamda muntazam ravishda turli veb-saytlar yarataman. Men IBM tomonidan sertifikatlangan dasturchiman va 3 yildan ortiq ish tajribasiga egaman.
+              Salom, mening ismim Bobur Jovliyev Nuriddin o'g'li. Men 2010-yil 7-iyun kuni O'zbekiston Respublikasi Qashqadaryo viloyati Qamashi tumani Uzun qishlog'ida harbiy xizmatchi oilasida tug'ilganman. Yoshligimdan aniq fanlarga, ayniqsa, matematika, fizika, ingliz tili va informatikaga qiziqishim juda yuqori bo'lgan.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground mt-4">
+              Hozirda men IBM tomonidan sertifikatlangan, 3 yildan ortiq real loyihalarda ish tajribasiga ega Full-Stack dasturchiman. Men nafaqat qiziqarli veb-saytlar, balki xavfsiz va yuqori tezlikda ishlaydigan murakkab tizimlarni ham ishlab chiqaman. O'z sohamda tinimsiz izlanishdaman va har bir yangi texnologiyani o'rganishga harakat qilaman.
             </p>
 
-            <ul className="space-y-4">
-              {["Zamonaviy Texnologiyalar", "Kreativ Yechimlar", "Sifatli Kod"].map((item, index) => (
+              {["Zamonaviy Texnologiyalar", "Kreativ Yechimlar", "Sifatli Kod", "Yuqori Tezlik va Xavfsizlik"].map((item, index) => (
                 <motion.li
                   key={item}
                   initial={{ opacity: 0, x: -20 }}
@@ -60,6 +62,20 @@ const About = () => {
                 </motion.li>
               ))}
             </ul>
+
+            <div className="mt-8 pt-8 border-t border-primary/20">
+              <h3 className="text-2xl font-bold mb-4">Ta'lim va Yutuqlar</h3>
+              <div className="space-y-4">
+                <div className="border-l-2 border-primary pl-4">
+                  <h4 className="font-bold text-lg">IBM Certified Developer</h4>
+                  <p className="text-muted-foreground text-sm">Xalqaro darajadagi IT sertifikat.</p>
+                </div>
+                <div className="border-l-2 border-primary pl-4">
+                  <h4 className="font-bold text-lg">Freelance Loyihalar</h4>
+                  <p className="text-muted-foreground text-sm">25+ dan ortiq real loyihalarni noldan boshlab topshirdim.</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div

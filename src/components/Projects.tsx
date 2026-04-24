@@ -101,8 +101,8 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4">
             <span className="gradient-text">L O Y I H A L A R I M</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Mening eng yaxshi ishlarim
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-6">
+            Mening tajribam davomida yaratgan turli xil platformalar, operatsion tizim interfeyslari, o'yinlar va xavfsizlikka oid loyihalar bilan tanishib chiqing. Har bir loyiha ustida alohida mehr bilan, eng yangi texnologiyalardan foydalanib ishladim.
           </p>
         </motion.div>
 
