@@ -1,15 +1,17 @@
 import Layout from "@/components/Layout";
 import AnimatedPage from "@/components/AnimatedPage";
-import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 
-const Index = () => {
+const ProjectsPage = () => {
   return (
     <Layout>
       <AnimatedPage>
-        <Hero />
+        <div className="pt-8">
+          <Projects />
+        </div>
       </AnimatedPage>
     </Layout>
   );
 };
 
-export default Index;
+export default ProjectsPage;

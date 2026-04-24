@@ -1,15 +1,15 @@
 import Layout from "@/components/Layout";
 import AnimatedPage from "@/components/AnimatedPage";
-import Hero from "@/components/Hero";
+import About from "@/components/About";
 
-const Index = () => {
+const AboutPage = () => {
   return (
     <Layout>
       <AnimatedPage>
-        <Hero />
+        <About />
       </AnimatedPage>
     </Layout>
   );
 };
 
-export default Index;
+export default AboutPage;
