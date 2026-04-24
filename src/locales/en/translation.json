@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "skills": "Skills",
+    "certificates": "Certificates",
+    "projects": "Projects",
+    "contact": "Contact",
+    "download_cv": "Download CV",
+    "hire_me": "Hire Me"
+  },
+  "contact": {
+    "send_button": "Send Message",
+    "sending": "Sending..."
+  }
+}

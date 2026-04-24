@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Главная",
+    "about": "Обо мне",
+    "skills": "Навыки",
+    "certificates": "Сертификаты",
+    "projects": "Проекты",
+    "contact": "Контакты",
+    "download_cv": "Скачать CV",
+    "hire_me": "Нанять меня"
+  },
+  "contact": {
+    "send_button": "Отправить сообщение",
+    "sending": "Отправка..."
+  }
+}

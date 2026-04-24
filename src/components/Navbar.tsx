@@ -2,8 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Clock, CloudSun, Calendar, Wind } from "lucide-react";
 import { Button } from "./ui/button";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const [time, setTime] = useState<string>("");
   const [dateStr, setDateStr] = useState<string>("");
   const [weather, setWeather] = useState<{ temp: number | null; wind: number | null }>({ temp: null, wind: null });
@@ -55,12 +57,12 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Bosh sahifa", href: "/" },
-    { name: "Men haqimda", href: "/about" },
-    { name: "Ko'nikmalar", href: "/skills" },
-    { name: "Sertifikatlar", href: "/certificates" },
-    { name: "Loyihalar", href: "/projects" },
-    { name: "Aloqa", href: "/contact" },
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.skills"), href: "/skills" },
+    { name: t("nav.certificates"), href: "/certificates" },
+    { name: t("nav.projects"), href: "/projects" },
+    { name: t("nav.contact"), href: "/contact" },
   ];
 
   return (
@@ -128,16 +130,27 @@ const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-3">
+            <div className="flex gap-2 mr-2 bg-black/20 p-1.5 rounded-full border border-primary/20">
+              <button onClick={() => i18n.changeLanguage('uz')} className={`w-6 h-6 rounded-full overflow-hidden transition-transform hover:scale-110 ${i18n.language === 'uz' ? 'ring-2 ring-primary scale-110' : 'opacity-60 hover:opacity-100'}`} title="O'zbek">
+                <img src="https://img.icons8.com/?size=512&id=115682&format=png" alt="UZ" className="w-full h-full object-cover"/>
+              </button>
+              <button onClick={() => i18n.changeLanguage('en')} className={`w-6 h-6 rounded-full overflow-hidden transition-transform hover:scale-110 ${i18n.language === 'en' ? 'ring-2 ring-primary scale-110' : 'opacity-60 hover:opacity-100'}`} title="English">
+                <img src="https://img.icons8.com/?size=512&id=15534&format=png" alt="EN" className="w-full h-full object-cover"/>
+              </button>
+              <button onClick={() => i18n.changeLanguage('ru')} className={`w-6 h-6 rounded-full overflow-hidden transition-transform hover:scale-110 ${i18n.language === 'ru' ? 'ring-2 ring-primary scale-110' : 'opacity-60 hover:opacity-100'}`} title="Русский">
+                <img src="https://img.icons8.com/?size=512&id=15502&format=png" alt="RU" className="w-full h-full object-cover"/>
+              </button>
+            </div>
             <Button
               variant="outline"
               className="hidden md:flex border-primary/30 text-white hover:bg-primary/20 hover:text-white rounded-full px-5 font-semibold text-sm h-10 transition-all duration-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] border border-cyan-500 bg-transparent"
             >
-              CV Yuklash
+              {t("nav.download_cv")}
             </Button>
             <Button
               className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-full px-6 font-semibold text-sm h-10 border-0 shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
             >
-              Ishga taklif
+              {t("nav.hire_me")}
             </Button>
           </div>
         </div>

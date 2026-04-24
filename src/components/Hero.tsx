@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import ParticleBackground from "./ParticleBackground";
 
 const Hero = () => {
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Mail, href: "#contact", label: "Email" },
+    { icon: Github, href: "https://github.com/JBoburHacker005", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/in/Bobur005", label: "LinkedIn" },
+    { icon: Instagram, href: "https://instagram.com/j.bobur005", label: "Instagram" },
+    { icon: Mail, href: "mailto:jbobur005@gmail.com", label: "Email" },
   ];
 
   return (
@@ -107,6 +107,8 @@ const Hero = () => {
               <motion.a
                 key={social.label}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

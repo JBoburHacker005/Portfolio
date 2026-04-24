@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "skills": "Ko'nikmalar",
+    "certificates": "Sertifikatlar",
+    "projects": "Loyihalar",
+    "contact": "Aloqa",
+    "download_cv": "CV Yuklash",
+    "hire_me": "Ishga taklif"
+  },
+  "contact": {
+    "send_button": "Xabar yuborish",
+    "sending": "Yuborilmoqda..."
+  }
+}
