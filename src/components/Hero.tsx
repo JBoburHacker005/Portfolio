@@ -31,34 +31,35 @@ const Hero = () => {
           >
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">
               <motion.img
-                src="/brand-logo.png"
+                src="/My Picture.png"
                 alt="JBN creative monogram"
-                className="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl"
-                initial={{ rotate: -5, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
+                className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-4 border-primary/50 shadow-[0_0_40px_rgba(var(--glow-primary),0.5)] z-20"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
               />
               <div className="text-center md:text-left flex flex-col items-center md:items-start gap-4">
-                <p className="text-xl md:text-2xl font-semibold tracking-wide text-primary">
-                  Jovliyev Bobur Nuriddin O&apos;g&apos;li
+                <p className="text-xl md:text-2xl font-semibold tracking-wide text-primary mb-2">
+                  Hello, I'm Bobur 👋
                 </p>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-tight">
+                  <span className="text-white">Software</span> <br className="hidden md:block" />
                   <span className="gradient-text glow-text-primary">
-                    Creative Developer
+                    Engineer
                   </span>
                 </h1>
               </div>
             </div>
           </motion.div>
 
-          <div className="text-2xl md:text-3xl lg:text-4xl text-muted-foreground mb-8 h-20">
+          <div className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-8 h-16 md:h-20 max-w-2xl mx-auto">
             <TypeAnimation
               sequence={[
-                "Building Digital Experiences",
+                "Full Stack Web Developer",
                 2000,
-                "Crafting Modern Interfaces",
+                "Building Scalable Applications",
                 2000,
-                "Designing with Purpose",
+                "Python & React Ecosystems",
                 2000,
               ]}
               wrapper="span"
@@ -71,9 +72,9 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed"
           >
-            Passionate about creating beautiful, functional, and user-centered digital experiences. I specialize in building high-quality, scalable web applications using React, TypeScript, and modern technologies. Let's turn your ideas into stunning digital realities.
+            I focus on building secure, scalable backends and highly interactive frontends. My core stack involves React, Node.js, Python, and PostgreSQL. I care about clean architecture, performance, and pragmatic security.
           </motion.p>
 
           <motion.div

@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Badge } from "lucide-react";
+import { Award, Badge, Medal, ExternalLink, Sparkles } from "lucide-react";
 
 export const certificates = [
   { title: "Back-end sertifikati", platform: "IBM", link: "https://jbobur.vercel.app/Sertifikat/Back-end%20sertifikati.pdf" },
@@ -40,54 +39,70 @@ export const certificates = [
 
 const Certificates = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.05 });
 
   return (
-    <section ref={ref} id="certificates" className="py-24 relative overflow-hidden bg-background">
+    <section ref={ref} id="certificates" className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4">
-            <span className="gradient-text">Sertifikatlarim</span>
+          <motion.span 
+            className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-widest uppercase border border-primary/20 mb-4"
+          >
+            Yutuqlar
+          </motion.span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-heading mb-6">
+            Mening <span className="gradient-text glow-text-primary italic">Sertifikatlarim</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            O'qib o'rgangan bilimlarimni tasdiqlaydigan hujjatlar
+            Xalqaro platformalar va kompaniyalar tomonidan tan olingan bilimlarim tasdig'i.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {certificates.map((cert, index) => (
             <motion.div
               key={cert.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: (index % 8) * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="glass p-6 rounded-2xl flex flex-col items-center text-center justify-between group border border-primary/10 hover:border-primary/50 transition-all shadow-lg"
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: (index % 12) * 0.05 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="glass p-8 rounded-3xl group border border-white/5 hover:border-primary/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
             >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                {cert.platform.includes("IBM") ? (
-                  <Badge className="w-8 h-8 text-white" />
-                ) : cert.platform.includes("HackerRank") ? (
-                  <Award className="w-8 h-8 text-white" />
-                ) : (
-                  <Award className="w-8 h-8 text-white" />
-                )}
-              </div>
-              <h3 className="text-lg font-bold mb-2 line-clamp-2">{cert.title}</h3>
-              <p className="text-sm text-muted-foreground mb-6">{cert.platform}</p>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 blur-2xl rounded-full -mr-10 -mt-10 group-hover:bg-primary/20 transition-all"></div>
               
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary group-hover:text-black transition-all">
+                  {cert.platform === "IBM" ? (
+                    <Badge className="w-7 h-7" />
+                  ) : cert.platform === "HackerRank" ? (
+                    <Medal className="w-7 h-7" />
+                  ) : (
+                    <Award className="w-7 h-7" />
+                  )}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 leading-tight group-hover:text-primary transition-colors">
+                  {cert.title}
+                </h3>
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">
+                  {cert.platform}
+                </p>
+              </div>
+
               <a
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-medium hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-all hover:scale-105"
+                className="mt-auto group/btn flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold hover:bg-primary hover:text-black hover:border-primary transition-all overflow-hidden relative"
               >
-                Ko'rish
+                <span className="relative z-10 flex items-center gap-2">
+                  Ko'rish <ExternalLink className="w-4 h-4" />
+                </span>
+                <Sparkles className="absolute right-4 opacity-0 group-hover/btn:opacity-100 group-hover/btn:scale-125 transition-all" />
               </a>
             </motion.div>
           ))}
@@ -98,3 +113,4 @@ const Certificates = () => {
 };
 
 export default Certificates;
+

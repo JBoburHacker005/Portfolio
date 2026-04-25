@@ -12,6 +12,7 @@ import SkillsPage from "./pages/SkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import CertificatesPage from "./pages/CertificatesPage";
+import { CustomCursor } from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CustomCursor />
       <BrowserRouter>
         <AnimatedRoutes />
       </BrowserRouter>
