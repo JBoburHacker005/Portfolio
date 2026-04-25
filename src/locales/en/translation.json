@@ -1,16 +1,32 @@
 {
-  "nav": {
-    "home": "Home",
-    "about": "About Me",
-    "skills": "Skills",
-    "certificates": "Certificates",
-    "projects": "Projects",
-    "contact": "Contact",
-    "download_cv": "Download CV",
-    "hire_me": "Hire Me"
+  "Hero": {
+    "Software": "Software",
+    "Engineer": "Engineer",
+    "TypeSequence": [
+      "Full Stack Web Developer",
+      "Building Scalable Applications",
+      "Python & React Ecosystems"
+    ],
+    "Description": "I focus on building secure, scalable backends and highly interactive frontends. My core stack involves React, Node.js, Python, and PostgreSQL.",
+    "Experience": "Years Experience",
+    "Projects": "Projects Done",
+    "Satisfaction": "Client Satisfaction",
+    "ViewWork": "View My Work",
+    "GetTouch": "Get In Touch"
   },
-  "contact": {
-    "send_button": "Send Message",
-    "sending": "Sending..."
+  "Services": {
+    "Title": "What I",
+    "Span": "Do",
+    "Description": "I provide a wide range of digital services to help your business grow and stand out in the competitive landscape.",
+    "Items": {
+      "Frontend": "Frontend Development",
+      "FrontendDesc": "Building beautiful, responsive, and highly interactive user interfaces.",
+      "Backend": "Backend Development",
+      "BackendDesc": "Creating robust APIs and server-side architecture.",
+      "Responsive": "Responsive Design",
+      "ResponsiveDesc": "Ensuring applications work perfectly across all devices.",
+      "CleanCode": "Clean Code",
+      "CleanCodeDesc": "Writing maintainable and documented code following best practices."
+    }
   }
 }

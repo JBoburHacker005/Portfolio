@@ -13,6 +13,8 @@ import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import CertificatesPage from "./pages/CertificatesPage";
 import { CustomCursor } from "./components/CustomCursor";
+import { PersistentPortrait } from "./components/PersistentPortrait";
+import { LanguageSelector } from "./components/LanguageSelector";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <CustomCursor />
+      <PersistentPortrait />
+      <LanguageSelector />
       <BrowserRouter>
         <AnimatedRoutes />
       </BrowserRouter>

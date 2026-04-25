@@ -2,6 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Clock, CloudSun, Calendar, Wind } from "lucide-react";
 import { Button } from "./ui/button";
+import { LanguageSelector } from "./LanguageSelector";
+
 
 const Navbar = () => {
   const [time, setTime] = useState<string>("");
@@ -100,10 +102,10 @@ const Navbar = () => {
         <div className="container mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
           
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="p-1 bg-black rounded-lg border border-primary/20 shadow-[0_0_10px_rgba(6,182,212,0.3)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-all duration-300">
+            <div className="p-1 bg-black rounded-lg border border-primary/20 transition-all duration-300">
               <img src="/brand-logo.png" alt="JBN Logo" className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <h1 className="text-xl md:text-2xl font-bold text-white hidden sm:block tracking-tight group-hover:text-cyan-400 transition-colors">
+            <h1 className="text-lg md:text-xl font-bold text-white hidden sm:block tracking-tight group-hover:text-cyan-400 transition-colors">
               Jovliyev Bobur Nuriddin o'g'li
             </h1>
           </Link>
@@ -115,10 +117,10 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`text-lg font-bold transition-all duration-300 border-b-2 py-1 ${
+                  className={`text-base font-bold transition-all duration-300 py-2 px-3 rounded-[10px] ${
                     isActive
-                      ? "text-white border-purple-500 shadow-[0_4px_10px_-2px_rgba(168,85,247,0.5)]"
-                      : "text-muted-foreground border-transparent hover:text-white hover:border-cyan-500"
+                      ? "text-white bg-white/10 shadow-[0_4px_10px_-2px_rgba(168,85,247,0.3)] border-b-2 border-purple-500"
+                      : "text-muted-foreground border-transparent hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {link.name}
@@ -143,6 +145,9 @@ const Navbar = () => {
                 Hire Me
               </Button>
             </a>
+            <div className="ml-2 pl-4 border-l border-white/10">
+              <LanguageSelector />
+            </div>
           </div>
         </div>
       </div>

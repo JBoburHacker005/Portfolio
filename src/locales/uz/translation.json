@@ -1,16 +1,32 @@
 {
-  "nav": {
-    "home": "Bosh sahifa",
-    "about": "Men haqimda",
-    "skills": "Ko'nikmalar",
-    "certificates": "Sertifikatlar",
-    "projects": "Loyihalar",
-    "contact": "Aloqa",
-    "download_cv": "CV Yuklash",
-    "hire_me": "Ishga taklif"
+  "Hero": {
+    "Software": "Dasturiy",
+    "Engineer": "Muhandis",
+    "TypeSequence": [
+      "Full Stack Web Dasturchi",
+      "Masshtablanuvchi ilovalar",
+      "Python va React ekotizimi"
+    ],
+    "Description": "Men xavfsiz, masshtablanuvchi backend va yuqori interaktiv frontend yaratishga ixtisoslashganman. Stack: React, Node.js, Python va PostgreSQL.",
+    "Experience": "Yillik Tajriba",
+    "Projects": "Loyihalar",
+    "Satisfaction": "Mijoz Mamnuniyati",
+    "ViewWork": "Ishlarimni ko'rish",
+    "GetTouch": "Bog'lanish"
   },
-  "contact": {
-    "send_button": "Xabar yuborish",
-    "sending": "Yuborilmoqda..."
+  "Services": {
+    "Title": "Men nimalar",
+    "Span": "qila olaman",
+    "Description": "Biznesingiz raqobatbardosh bo'lishi uchun keng ko'lamli raqamli xizmatlarni taqdim etaman.",
+    "Items": {
+      "Frontend": "Frontend Dasturlash",
+      "FrontendDesc": "Go'zal, moslashuvchan va yuqori interaktiv foydalanuvchi interfeyslarini yaratish.",
+      "Backend": "Backend Dasturlash",
+      "BackendDesc": "Mustahkam API va server arxitekturasini yaratish.",
+      "Responsive": "Moslashuvchan Dizayn",
+      "ResponsiveDesc": "Ilovalarning barcha qurilmalarda mukammal ishlashini ta'minlash.",
+      "CleanCode": "Toza Kod",
+      "CleanCodeDesc": "Eng yaxshi amaliyotlar asosida yozilgan masshtablanuvchi kod."
+    }
   }
 }
